@@ -63,54 +63,56 @@ Dr. Tagger uses a combination of official APIs and specialized web scrapers to p
 | Audio    | Mutagen (ID3), Chromaprint    |
 | APIs     | Discogs, Beatport, Traxsource |
 
-## 🚀 Quick Start
+## 🚀 Quick Start (Recommended: Docker)
 
-### Prerequisites
+The easiest way to run Dr. Tagger is using Docker.
 
-- Python 3.10+
-- **fpcalc** (Chromaprint CLI tool)
-  - **Windows**: Place `fpcalc.exe` in the project root.
-  - **Linux**: Install via package manager: `sudo apt install libchromaprint-tools`
-  - **Docker**: Automatically included in the image.
+### 1. Prerequisites
+- **Docker Desktop** installed and running.
+- **WSL 2** enabled (for Windows users).
 
-### Installation
-
+### 2. Setup & Running
 ```bash
 # Clone the repository
 git clone https://github.com/akadawa/dr.tagger.git
 cd dr.tagger
 
-# Create virtual environment
-python -m venv .venv
+# Copy environment template
+cp .env.example .env
 
-# Activate it
-# Windows:
-.\.venv\Scripts\activate
-# Linux/Mac:
-source .venv/bin/activate
+# Build and start
+docker-compose up --build -d
+```
+Then open [http://localhost:3003](http://localhost:3003) in your browser.
+
+---
+
+## 🛠 Manual Installation (Alternative)
+
+If you prefer to run it natively without Docker:
+
+### Prerequisites
+- Python 3.10+
+- **fpcalc** (Chromaprint CLI tool)
+  - **Windows**: Place `fpcalc.exe` in the project root.
+  - **Linux**: Install via package manager: `sudo apt install libchromaprint-tools`
+
+### Setup
+```bash
+# Create and activate virtual environment
+python -m venv .venv
+source .venv/bin/activate  # Or .\.venv\Scripts\activate on Windows
 
 # Install dependencies
 pip install -r requirements.txt
-```
 
-### Configuration
-
-```bash
-# Copy the example environment file
+# Copy and edit .env
 cp .env.example .env
 
-# Edit .env and add your Discogs API key
-# Get one at: https://www.discogs.com/settings/developers
-```
-
-### Running
-
-```bash
+# Run server
 python -m uvicorn backend.main:app --host 0.0.0.0 --port 8002
 ```
-
 Then open [http://localhost:8002](http://localhost:8002) in your browser.
-*(If using Docker, open [http://localhost:5002](http://localhost:5002) instead.)*
 
 ## 📁 Project Structure
 

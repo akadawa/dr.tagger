@@ -3,7 +3,7 @@ services:
     build: .
     container_name: drtagger
     ports:
-      - "5002:8002"
+      - "3003:80"
     environment:
       - DISCOGS_API_KEY=your_discogs_api_key_here
     volumes:
