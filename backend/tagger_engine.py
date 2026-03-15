@@ -106,7 +106,7 @@ def lookup_metadata(duration, fingerprint):
                         # Join top 3 tags as genres
                         genre_list = [t.get('name') for t in tags if isinstance(t, dict) and t.get('name')]
                         if genre_list:
-                            match['genre'] = " / ".join(genre_list[:3])
+                            match['genre'] = "; ".join(genre_list[:3])
                         
                     print(f"  - Possible Match: {match['artist']} - {match['title']} (Score: {score:.2f})")
                     
@@ -233,7 +233,7 @@ def search_discogs(artist, title):
 
         # Fetch detailed release info for full genre/style/label/year
         genre_list = hit.get('genre', []) + hit.get('style', [])
-        genres = " / ".join(genre_list[:4]) if genre_list else 'Not found'
+        genres = '; '.join(genre_list[:4]) if genre_list else 'Not found'
 
         # Parse title from result — usually "Artist - Title" or just Title
         result_title = hit.get('title', f"{artist} - {title}")
@@ -291,7 +291,7 @@ def search_discogs_by_catno(catalog_id):
                     'title': 'Unknown', # Title often not in basic search result for release
                     'album': hit.get('title', '').split(' - ')[-1],
                     'year': hit.get('year'),
-                    'genre': " / ".join(hit.get('genre', []) + hit.get('style', [])),
+                    'genre': '; '.join(hit.get('genre', []) + hit.get('style', [])),
                     'label': hit.get('label', [None])[0],
                     'cover_url': hit.get('cover_image'),
                     'score': 98, # Catalog match is nearly certain
@@ -385,7 +385,7 @@ def search_beatport(artist, title, catalog_id=None):
         res_cover = (track_info.get('image') or {}).get('uri') or (track_info.get('release', {}).get('image') or {}).get('uri')
         
         if res_bpm and res_key:
-            res_genre = f"{res_genre} / {res_bpm} BPM / {res_key}"
+            res_genre = f"{res_genre}; {res_bpm} BPM; {res_key}"
             # Keep raw values for dedicated tags
             track_info['bpm'] = res_bpm
             track_info['key'] = res_key
@@ -496,7 +496,7 @@ def search_juno(artist, title, catalog_id=None):
         label_match = re.search(r'Label:</strong>\s*<a[^>]*>([^<]+)</a>', track_resp.text)
         label = label_match.group(1) if label_match else None
         
-        if bpm: genre = f"{genre} / {bpm} BPM"
+        if bpm: genre = f"{genre}; {bpm} BPM"
 
         return {
             'artist': artist, 'title': res_title, 'genre': genre,
@@ -577,7 +577,7 @@ def search_bandcamp(artist, title):
             keywords = [k.strip() for k in keywords.split(',')]
         # Filter out very generic/noise tags, take best 4
         genre_list = [k.strip() for k in keywords if k.strip()][:4]
-        genre = ' / '.join(genre_list) if genre_list else 'Not found'
+        genre = '; '.join(genre_list) if genre_list else 'Not found'
 
         match = {
             'artist':    result_artist,
@@ -613,8 +613,11 @@ def apply_tags(file_path, tags):
     if tags.get('album'):
         audio['TALB'] = TALB(encoding=3, text=tags['album'])
     if tags.get('genre') and tags['genre'] != 'Not found':
-        genre_values = [g.strip() for g in tags['genre'].split(' / ') if g.strip()]
-        audio['TCON'] = TCON(encoding=3, text=genre_values)
+        # Write as single string for Navidrome compatibility (uses ; as separator)
+        genre_str = tags['genre']
+        # Normalize any existing separators to semicolons
+        genre_str = genre_str.replace(' / ', '; ')
+        audio['TCON'] = TCON(encoding=3, text=[genre_str])
     if tags.get('year'):
         audio['TYER'] = TYER(encoding=3, text=str(tags['year']))
         audio['TDRC'] = TDRC(encoding=3, text=str(tags['year']))
@@ -684,8 +687,10 @@ def apply_tags_to_file(file_path, tags):
         if tags.get('album'): audio['TALB'] = TALB(encoding=3, text=tags['album'])
         if tags.get('genre'):
             genre_str = tags['genre']
-            genre_values = [g.strip() for g in genre_str.split(' / ') if g.strip()]
-            audio['TCON'] = TCON(encoding=3, text=genre_values)
+            # Normalize any existing separators to semicolons for Navidrome
+            genre_str = genre_str.replace(' / ', '; ')
+            genre_values = [g.strip() for g in genre_str.split('; ') if g.strip()]
+            audio['TCON'] = TCON(encoding=3, text=[genre_str])
             
             # Proactive: Try to extract BPM/Key from the genre string if not explicitly provided
             pattern_bpm = re.compile(r'(\d+(?:\.\d+)?)\s*BPM', re.IGNORECASE)
@@ -819,7 +824,7 @@ def search_musicbrainz(artist, title):
         if tags:
             genre_list = [t.get('name') for t in tags if t.get('name')]
             if genre_list:
-                match['genre'] = " / ".join(genre_list[:3])
+                match['genre'] = "; ".join(genre_list[:3])
         
         # Try to find album info
         releases = rec.get('releases', [])

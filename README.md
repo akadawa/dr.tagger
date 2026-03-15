@@ -1,8 +1,13 @@
 # 🩺 Dr. Tagger
 
+> **Note**: Yes, this is an AI-powered project! 😉
+
 **Treats your broken tags** — An intelligent MP3 auto-tagger with a sleek dark UI.
 
-Dr. Tagger automatically identifies and tags your MP3 files using multiple metadata sources (Discogs, Beatport, Traxsource) and audio fingerprinting (AcoustID/Chromaprint).
+### 🌟 Project Mission
+This project was born out of personal interest to solve the "messy library" problem, specifically helping with accurate tagging for **Techno** and electronic music genres where standard taggers often fail. 
+
+I'm opening this up to the public and would love to develop it further based on community interest. **Feature requests and contributions are highly welcome!**
 
 ---
 
