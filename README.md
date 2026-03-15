@@ -161,7 +161,10 @@ We're just getting started! Here's what's planned for future releases:
 
 ### 💡 Tips for Synology/Older Docker Versions
 If you get a "client version too new" error on Synology NAS or older systems:
-1. Ensure the `version` attribute is removed from `docker-compose.yml` (done by default now).
-2. You may need to set the environment variable `COMPOSE_API_VERSION=1.43` (or your max supported version) in your deployment tool.
+1. **Remove Version**: Ensure the `version` attribute is removed from `docker-compose.yml` (done by default now).
+2. **Pin API Version**: You **must** set the following environment variable on the host that triggers the deployment:
+   - `DOCKER_API_VERSION=1.43`
+   - `COMPOSE_API_VERSION=1.43`
+3. **Dockhand Users**: In Dockhand, add these variables to the environmental settings of your project or stack. This forces the client to talk in a language the older Synology Docker daemon understands.
 
 Feel free to open an issue if you'd like to see a specific feature!
