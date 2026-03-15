@@ -25,6 +25,9 @@ covers/uploaded/*
 # Binary tools (platform-specific, download separately)
 fpcalc.exe
 
+# Local Docker overrides
+local-compose.yml
+
 # IDE
 .vscode/
 .idea/
