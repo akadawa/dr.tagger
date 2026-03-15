@@ -16,10 +16,20 @@ load_dotenv()
 API_KEY = "8XaBELgH" # AcoustID Public API Key for pyacoustid
 DISCOGS_API_KEY = os.getenv("DISCOGS_API_KEY", "MTOEWEYabCrawqiorOtdatthIkgFDIQesxVlfkbT") # Discogs Personal Access Token
 
-# Make search for fpcalc more robust - check current directory
-FPCALC_PATH = Path(__file__).resolve().parent.parent / "fpcalc.exe"
+# Make search for fpcalc more robust - handle Windows and Linux/Unix
+if os.name == 'nt':
+    FPCALC_PATH = Path(__file__).resolve().parent.parent / "fpcalc.exe"
+else:
+    FPCALC_PATH = Path(__file__).resolve().parent.parent / "fpcalc"
+
 if FPCALC_PATH.exists():
     acoustid.FPCALC_COMMAND = str(FPCALC_PATH)
+else:
+    # If not in project root, assume it's in the system PATH
+    import shutil
+    sys_fpcalc = shutil.which("fpcalc")
+    if sys_fpcalc:
+        acoustid.FPCALC_COMMAND = sys_fpcalc
 
 def get_page(url, referer=None):
     """Fetches a page with robust mobile browser headers to avoid detection."""

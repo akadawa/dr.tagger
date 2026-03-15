@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  dr-tagger:
+    build: .
+    container_name: dr-tagger
+    ports:
+      - "8002:8002"
+    volumes:
+      - ./audiofiles:/app/audiofiles
+      - ./backup:/app/backup
+      - ./covers/uploaded:/app/covers/uploaded
+      - ./.env:/app/.env
+    restart: unless-stopped

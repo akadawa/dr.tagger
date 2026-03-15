@@ -1,18 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Space+Grotesk:wght@300;400;500;700&display=swap');
 
 :root {
-    --bg: #000000;
-    --surface: #0a0a0a;
-    --border: #222222;
-    --border-bright: #444444;
-    --text: #ffffff;
-    --text-dim: rgba(255, 255, 255, 0.4);
-    --text-muted: rgba(255, 255, 255, 0.2);
-    --accent: #3b82f6;
-    --secondary: rgba(255,255,255,0.4); /* compatibility alias */
-    --error: #ff3333;
+    --bg: #050505;
+    --surface: #0f0f0f;
+    --border: #1a1a1a;
+    --border-bright: #2a2a2a;
+    --text: #f0f0f0;
+    --text-dim: rgba(240, 240, 240, 0.5);
+    --text-muted: rgba(240, 240, 240, 0.2);
+    --accent: #2563eb;
+    --accent-glow: rgba(37, 99, 235, 0.4);
+    --secondary: rgba(255,255,255,0.4); 
+    --error: #ef4444;
+    --success: #22c55e;
     --mono: 'IBM Plex Mono', monospace;
     --sans: 'Space Grotesk', sans-serif;
+    --transition: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 * {
@@ -280,15 +283,27 @@ button {
     font-family: var(--mono);
     font-size: 0.75rem;
     letter-spacing: 0.15em;
-    text-transform: uppercase;
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border-bright);
+    padding: 0.75rem 1.5rem;
     cursor: pointer;
-    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.2s var(--transition);
+    border-radius: 4px;
+    letter-spacing: 0.02em;
 }
 
-button:hover {
-    background: var(--text);
-    color: var(--bg);
-    border-color: var(--text);
+button:hover:not(:disabled) {
+    background: var(--border-bright);
+    border-color: var(--text-dim);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+button:active:not(:disabled) {
+    transform: translateY(0);
 }
 
 button:disabled {
@@ -298,14 +313,16 @@ button:disabled {
 }
 
 button.primary {
-    background: var(--text);
-    color: var(--bg);
-    border-color: var(--text);
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+    box-shadow: 0 0 15px var(--accent-glow);
 }
 
-button.primary:hover {
-    background: transparent;
-    color: var(--text);
+button.primary:hover:not(:disabled) {
+    background: #1d4ed8;
+    border-color: #1d4ed8;
+    box-shadow: 0 0 25px var(--accent-glow);
 }
 
 button.secondary {
