@@ -125,3 +125,18 @@ dr.tagger/
 ## 📝 License
 
 MIT
+
+---
+
+## 🗺️ Roadmap & Future Tasks
+
+We're just getting started! Here's what's planned for future releases:
+
+- [ ] **Linux Compatibility** — Abstract `fpcalc` path handling to support Linux systems natively.
+- [ ] **Docker Support** — Create a `Dockerfile` and `docker-compose.yml` for easy deployment.
+- [ ] **Official Docker Image** — Publish a ready-to-use image to Docker Hub.
+- [ ] **Expand Search APIs** — Integrate more metadata providers (e.g., MusicBrainz API directly, SoundCloud).
+- [ ] **UI/UX Polishing** — Refine the dark theme, improve mobile responsiveness, and add more micro-animations.
+- [ ] **Batch Metadata Editing** — Allow editing multiple tracks simultaneously.
+
+Feel free to open an issue if you'd like to see a specific feature!
