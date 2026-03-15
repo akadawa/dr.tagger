@@ -1,17 +1,17 @@
-# <img src="docs/logo.png" align="right" width="120"> 🩺 Dr. Tagger
+# <img src="docs/logo.png" align="right" width="120"> Dr. Tagger
 
-> **Note**: Yes, this is an AI-powered project! 😉
+> **Note**: Yes, this is an AI-powered project!
 
 **Treats your broken tags** — An intelligent MP3 auto-tagger with a sleek dark UI.
 
-### 🌟 Project Mission
+### Project Mission
 This project was born out of personal interest to solve the "messy library" problem, specifically helping with accurate tagging for **Techno** and electronic music genres where standard taggers often fail. 
 
 I'm opening this up to the public and would love to develop it further based on community interest. **Feature requests and contributions are highly welcome!**
 
 ---
 
-## ✨ Features
+## Features
 
 - **Auto-Tagging** — Scans your MP3 library and automatically identifies tracks via audio fingerprinting and metadata APIs.
 - **Specialized Web Scrapers** — Enhanced identification for electronic music via custom scrapers for popular platforms (improves results where standard APIs fail).
@@ -21,7 +21,7 @@ I'm opening this up to the public and would love to develop it further based on 
 - **Before/After Comparison** — Review original vs. proposed tags side-by-side in the Tag Details modal.
 - **Backup & Restore** — Automatic backups before writing tags, with one-click restoration.
 
-## 📸 Screenshots
+## Screenshots
 
 ![Main Dashboard](docs/screenshots/screenshot_main.png)
 *Modern dark UI with live progress and playback controls*
@@ -37,7 +37,7 @@ I'm opening this up to the public and would love to develop it further based on 
 
 </details>
 
-## 🔍 Metadata Sources & Scrapers
+## Metadata Sources & Scrapers
 
 Dr. Tagger uses a combination of official APIs and specialized web scrapers to provide the best possible data for electronic music:
 
@@ -53,7 +53,7 @@ Dr. Tagger uses a combination of official APIs and specialized web scrapers to p
 > [!NOTE]
 > The web scrapers are custom-built to help bridge the gap for techno-specific subgenres and titles that often aren't fully indexed in generic databases. They are continuously being refined to handle page layout changes.
 
-## 🛠 Tech Stack
+## Tech Stack
 
 | Layer    | Technology                    |
 |----------|-------------------------------|
@@ -63,7 +63,7 @@ Dr. Tagger uses a combination of official APIs and specialized web scrapers to p
 | Audio    | Mutagen (ID3), Chromaprint    |
 | APIs     | Discogs, Beatport, Traxsource |
 
-## 🚀 Quick Start (Recommended: Docker)
+## Quick Start (Recommended: Docker)
 
 The easiest way to run Dr. Tagger is using Docker.
 
@@ -87,7 +87,7 @@ Then open [http://localhost:3003](http://localhost:3003) in your browser.
 
 ---
 
-## 🛠 Manual Installation (Alternative)
+## Manual Installation (Alternative)
 
 If you prefer to run it natively without Docker:
 
@@ -114,7 +114,7 @@ python -m uvicorn backend.main:app --host 0.0.0.0 --port 8002
 ```
 Then open [http://localhost:8002](http://localhost:8002) in your browser.
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 dr.tagger/
@@ -135,7 +135,7 @@ dr.tagger/
 └── README.md
 ```
 
-## 📖 Usage
+## Usage
 
 1. **Drop MP3 files** into the `audiofiles/` directory (subdirectories supported)
 2. **Click "Start Scan"** to begin automatic identification
@@ -151,7 +151,7 @@ MIT
 
 ---
 
-## 🗺️ Roadmap & Future Tasks
+## Roadmap & Future Tasks
 
 We're just getting started! Here's what's planned for future releases:
 
@@ -162,7 +162,7 @@ We're just getting started! Here's what's planned for future releases:
 - [ ] **UI/UX Polishing** — Refine the dark theme, improve mobile responsiveness, and add more micro-animations.
 - [ ] **Batch Metadata Editing** — Allow editing multiple tracks simultaneously.
 
-### 🚨 Important: Synology / Older Docker Errors
+### Important: Synology / Older Docker Errors
 If you see an error like `client version 1.52 is too new. Maximum supported API version is 1.43`:
 
 1. **Step 1**: In your deployment tool (e.g. **Dockhand** or **Portainer**), go to the **Environment Variables** (Umgebungsvariablen) section of the stack/project.
