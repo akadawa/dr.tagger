@@ -110,6 +110,7 @@ python -m uvicorn backend.main:app --host 0.0.0.0 --port 8002
 ```
 
 Then open [http://localhost:8002](http://localhost:8002) in your browser.
+*(If using Docker, open [http://localhost:5002](http://localhost:5002) instead.)*
 
 ## 📁 Project Structure
 
