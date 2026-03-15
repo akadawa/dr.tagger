@@ -1,4 +1,4 @@
-# 🩺 Dr. Tagger
+# <img src="docs/logo.png" align="right" width="120"> 🩺 Dr. Tagger
 
 > **Note**: Yes, this is an AI-powered project! 😉
 
