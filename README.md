@@ -13,14 +13,28 @@ I'm opening this up to the public and would love to develop it further based on 
 
 ## ✨ Features
 
-- **Auto-Tagging** — Scans your MP3 library and automatically identifies tracks via audio fingerprinting and metadata APIs
-- **Manual Search** — Search across Discogs, Beatport, and Traxsource when auto-detection fails
-- **Cover Art** — Automatic cover art embedding from metadata sources + manual JPG upload
-- **Before/After Comparison** — Tag Details modal shows original vs. proposed tags side-by-side
-- **Backup & Restore** — Automatic file backups before writing tags, with one-click restore
-- **Live Progress** — Real-time scan/tag progress via WebSocket
-- **Recursive Scanning** — Scans all subdirectories within your audio folder
-- **Audio Preview** — Built-in audio player with play/pause controls
+- **Auto-Tagging** — Scans your MP3 library and automatically identifies tracks via audio fingerprinting and metadata APIs.
+- **Specialized Web Scrapers** — Enhanced identification for electronic music via custom scrapers for popular platforms (improves results where standard APIs fail).
+- **Manual Search** — Search across multiple providers when auto-detection needs help.
+- **Cover Art** — Automatic cover art embedding + manual JPG upload support.
+- **Before/After Comparison** — Review original vs. proposed tags side-by-side in the Tag Details modal.
+- **Backup & Restore** — Automatic backups before writing tags.
+
+## 🔍 Metadata Sources & Scrapers
+
+Dr. Tagger uses a combination of official APIs and specialized web scrapers to provide the best possible data for electronic music:
+
+| Source | Method | Description |
+|--------|--------|-------------|
+| **AcoustID** | API | Core audio fingerprinting for initial identification |
+| **Discogs** | API | Massive database for releases, genres, and styles |
+| **Beatport** | Scraper | Specialized for Techno/House, provides BPM and Key data |
+| **Traxsource** | Scraper | Excellent for underground House and Nu-Disco |
+| **Juno Download** | Scraper | Broad electronic music coverage and release dates |
+| **Bandcamp** | Scraper | Direct-from-artist metadata and high-quality covers |
+
+> [!NOTE]
+> The web scrapers are custom-built to help bridge the gap for techno-specific subgenres and titles that often aren't fully indexed in generic databases. They are continuously being refined to handle page layout changes.
 
 ## 🛠 Tech Stack
 
