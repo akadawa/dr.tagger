@@ -15,10 +15,27 @@ I'm opening this up to the public and would love to develop it further based on 
 
 - **Auto-Tagging** — Scans your MP3 library and automatically identifies tracks via audio fingerprinting and metadata APIs.
 - **Specialized Web Scrapers** — Enhanced identification for electronic music via custom scrapers for popular platforms (improves results where standard APIs fail).
-- **Manual Search** — Search across multiple providers when auto-detection needs help.
+- **Manual Search & Tagging** — Batch search and manually select perfect metadata from multiple providers.
+- **Audio Playback** — Built-in player with volume, seeking, and real-time EQ visualization to preview your tracks.
 - **Cover Art** — Automatic cover art embedding + manual JPG upload support.
 - **Before/After Comparison** — Review original vs. proposed tags side-by-side in the Tag Details modal.
-- **Backup & Restore** — Automatic backups before writing tags.
+- **Backup & Restore** — Automatic backups before writing tags, with one-click restoration.
+
+## 📸 Screenshots
+
+![Main Dashboard](docs/screenshots/screenshot_main.png)
+*Modern dark UI with live progress and playback controls*
+
+<details>
+<summary>View More Screenshots</summary>
+
+![Manual Tagging](docs/screenshots/screenshot_manual_tagging.png)
+*Precise manual metadata selection*
+
+![Restore Original](docs/screenshots/screenshot_restore_original.png)
+*Easy backup management and restoration*
+
+</details>
 
 ## 🔍 Metadata Sources & Scrapers
 
@@ -51,7 +68,10 @@ Dr. Tagger uses a combination of official APIs and specialized web scrapers to p
 ### Prerequisites
 
 - Python 3.10+
-- [fpcalc](https://acoustid.org/chromaprint) (Chromaprint CLI tool) — place `fpcalc.exe` in the project root
+- **fpcalc** (Chromaprint CLI tool)
+  - **Windows**: Place `fpcalc.exe` in the project root.
+  - **Linux**: Install via package manager: `sudo apt install libchromaprint-tools`
+  - **Docker**: Automatically included in the image.
 
 ### Installation
 
