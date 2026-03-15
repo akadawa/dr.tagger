@@ -3,7 +3,7 @@ services:
     build: .
     container_name: dr-tagger
     ports:
-      - "8002:8002"
+      - "5002:8002"
     volumes:
       - ./audiofiles:/app/audiofiles
       - ./backup:/app/backup
