@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+mutagen
+pyacoustid
+requests
+python-dotenv
+python-multipart
+websockets

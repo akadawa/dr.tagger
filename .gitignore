@@ -1,0 +1,32 @@
+# Dr. Tagger - Environment Variables
+
+# Virtual environment
+.venv/
+__pycache__/
+*.pyc
+
+# Environment / Secrets
+.env
+
+# Database (auto-created on startup)
+backend/tags.db
+backend/tags.db-wal
+backend/tags.db-shm
+tagger.db
+
+# User data directories (contents are user-specific)
+audiofiles/*
+!audiofiles/.gitkeep
+backup/*
+!backup/.gitkeep
+covers/uploaded/*
+!covers/uploaded/.gitkeep
+
+# Binary tools (platform-specific, download separately)
+fpcalc.exe
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
