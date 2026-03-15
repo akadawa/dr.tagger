@@ -93,28 +93,80 @@ Then open [http://localhost:3003](http://localhost:3003) in your browser.
 1. Open **Container Manager** on your Synology NAS.
 2. Go to **Project** and click **Create**.
 3. Set a project name (e.g., `dr-tagger`) and choose a path.
-4. Select **Create docker-compose.yml** and paste the content of the official `docker-compose.yml`.
-5. Adjust the `volumes` section to point to your music folder (e.g., `/volume1/music:/app/audiofiles`).
-6. Complete the wizard to start the container.
+4. Select **Create docker-compose.yml** and paste the following:
+```yaml
+services:
+  drtagger:
+    image: akadawa/drtagger:latest
+    container_name: drtagger
+    ports:
+      - "3003:80"
+    environment:
+      - DISCOGS_API_KEY=your_discogs_api_key_here
+    volumes:
+      - /volume1/music:/app/audiofiles
+    restart: unless-stopped
+```
+5. Click **Next** and complete the wizard.
 
 ### Dockge
 1. Open your **Dockge** interface.
 2. Click **+ Compose** to create a new stack.
 3. Name it `dr-tagger`.
-4. Paste the `docker-compose.yml` into the editor.
+4. Paste the following into the editor:
+```yaml
+services:
+  drtagger:
+    image: akadawa/drtagger:latest
+    container_name: drtagger
+    ports:
+      - "3003:80"
+    environment:
+      - DISCOGS_API_KEY=your_discogs_api_key_here
+    volumes:
+      - /path/to/your/music:/app/audiofiles
+    restart: unless-stopped
+```
 5. Click **Deploy**.
 
 ### Portainer
 1. Open **Portainer** and navigate to **Stacks**.
 2. Click **Add stack**.
 3. Name it `dr-tagger`.
-4. Use the **Web editor** to paste the `docker-compose.yml`.
+4. Use the **Web editor** to paste the following:
+```yaml
+services:
+  drtagger:
+    image: akadawa/drtagger:latest
+    container_name: drtagger
+    ports:
+      - "3003:80"
+    environment:
+      - DISCOGS_API_KEY=your_discogs_api_key_here
+    volumes:
+      - /path/to/your/music:/app/audiofiles
+    restart: unless-stopped
+```
 5. Click **Deploy the stack**.
 
 ### Dockhand
-1. Ensure your **Dockhand** environment is configured.
-2. Add the `dr-tagger` service definition to your setup.
-3. Deploy the stack as per your standard workflow.
+1. Open your **Dockhand** environment.
+2. Create a new stack named `dr-tagger`.
+3. Paste the following configuration:
+```yaml
+services:
+  drtagger:
+    image: akadawa/drtagger:latest
+    container_name: drtagger
+    ports:
+      - "3003:80"
+    environment:
+      - DISCOGS_API_KEY=your_discogs_api_key_here
+    volumes:
+      - /path/to/your/music:/app/audiofiles
+    restart: unless-stopped
+```
+4. Deploy the stack.
 
 ---
 
@@ -176,7 +228,7 @@ dr.tagger/
 6. **Click "Write Tags"** to apply all changes to your files
 7. **Restore** — Use the Restore button to revert any changes from backups
 
-## 📝 License
+## License
 
 MIT
 
