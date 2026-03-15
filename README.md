@@ -159,4 +159,9 @@ We're just getting started! Here's what's planned for future releases:
 - [ ] **UI/UX Polishing** — Refine the dark theme, improve mobile responsiveness, and add more micro-animations.
 - [ ] **Batch Metadata Editing** — Allow editing multiple tracks simultaneously.
 
+### 💡 Tips for Synology/Older Docker Versions
+If you get a "client version too new" error on Synology NAS or older systems:
+1. Ensure the `version` attribute is removed from `docker-compose.yml` (done by default now).
+2. You may need to set the environment variable `COMPOSE_API_VERSION=1.43` (or your max supported version) in your deployment tool.
+
 Feel free to open an issue if you'd like to see a specific feature!
